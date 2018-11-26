@@ -2,10 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import { createStore } from './redux';
-import themeReducer from './reducers'
 import { Provider } from './react-redux'
+import themeReducer from './reducers'
 
-const store = createStore(themeReducer)
+// 创建store ：用于管理reducers，并返回{getState,dispatch,subscribe}
+const store = createStore(themeReducer);
+
 ReactDOM.render(
 	<Provider store={store}>
         <App />

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from '../react-redux'
 
 class ThemeSwitch extends React.Component {
+	// 设置所需参数
 	static propTypes = {
 		themeColor: PropTypes.string,
 		onSwitchColor: PropTypes.func
@@ -28,12 +29,12 @@ class ThemeSwitch extends React.Component {
 	}
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
 	return {
 		themeColor: state.themeColor
 	}
 }
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		onSwitchColor: (color) => {
 			dispatch({

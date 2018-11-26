@@ -3,7 +3,7 @@ import ThemeSwitch from './ThemeSwitch'
 import { connect } from '../react-redux'
 
 class Content extends React.Component {
-	
+
 	render() {
 		return(
 			<div>
@@ -14,10 +14,10 @@ class Content extends React.Component {
 	}
 }
 
-const mapStateToProps = (state) => {
-  return {
-    themeColor: state.themeColor
-  }
+const mapStateToProps = (state, ownProps) => {
+	return {
+		themeColor: state.themeColor
+	}
 }
 Content = connect(mapStateToProps)(Content)
 

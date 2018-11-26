@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+// 高阶组件 contect 
 export const connect = (mapStateToProps, mapDispatchToProps) => (WrappedComponent) => {
 	class Connect extends React.Component {
+		// 通过对context调用获取store
 		static contextTypes = {
 			store: PropTypes.object
 		}
@@ -15,13 +17,12 @@ export const connect = (mapStateToProps, mapDispatchToProps) => (WrappedComponen
 		}
 
 		componentWillMount() {
-			const {
-				store
-			} = this.context
+			const store = this.context.store
 			this._updateProps()
-			store.subscribe(() => this._updateProps())
+			store.subscribe(() => this._updateProps()); // 加入_updateProps()至store里的监听事件列表
 		}
-
+		
+		// 更新组件入参props
 		_updateProps() {
 			const store = this.context.store;
 			let stateProps = mapStateToProps ?
@@ -44,6 +45,7 @@ export const connect = (mapStateToProps, mapDispatchToProps) => (WrappedComponen
 	return Connect
 }
 
+// 高阶组件 Provider
 export class Provider extends React.Component {
 	static propTypes = {
 		store: PropTypes.object,
@@ -54,6 +56,7 @@ export class Provider extends React.Component {
 		store: PropTypes.object
 	}
 
+	// 通过对context调用设置store
 	getChildContext() {
 		return {
 			store: this.props.store

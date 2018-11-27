@@ -15,14 +15,15 @@ export const connect = (mapStateToProps, mapDispatchToProps) => (WrappedComponen
 				allProps: {}
 			}
 		}
-
+		
+		// 第一遍需初始化所有组件初始状态
 		componentWillMount() {
 			const store = this.context.store
 			this._updateProps()
 			store.subscribe(() => this._updateProps()); // 加入_updateProps()至store里的监听事件列表
 		}
 		
-		// 更新组件入参props
+		// 执行action后更新props，使组件可以更新至最新状态（类似于setState）
 		_updateProps() {
 			const store = this.context.store;
 			let stateProps = mapStateToProps ?

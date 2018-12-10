@@ -2,6 +2,6 @@
 Redux 演示项目
 
 ## 项目启动命令
-- npm install
+- cnpm install
 - npm run dev
 
